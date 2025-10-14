@@ -8,3 +8,19 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# IntelliJ
+.idea/
+*.iml
+# Maven
+**/target/
+# Node / React
+web/node_modules/
+web/dist/
+web/.vite/
+# OS
+.DS_Store
+Thumbs.db
+# Env
+**/.env
+**/.env.*
+
