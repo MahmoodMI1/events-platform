@@ -1,0 +1,34 @@
+-- V1__init.sql
+CREATE TABLE users (
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       username VARCHAR(50) NOT NULL UNIQUE,
+                       email VARCHAR(100) NOT NULL UNIQUE,
+                       password_hash VARCHAR(255) NOT NULL,
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE wallets (
+                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                         user_id BIGINT NOT NULL,
+                         balance DECIMAL(10,2) DEFAULT 0.00,
+                         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE events (
+                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                        name VARCHAR(100) NOT NULL,
+                        location VARCHAR(100),
+                        start_time DATETIME NOT NULL,
+                        end_time DATETIME NOT NULL,
+                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tickets (
+                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                         event_id BIGINT NOT NULL,
+                         user_id BIGINT NOT NULL,
+                         price DECIMAL(10,2) NOT NULL,
+                         purchased_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                         FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
+                         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
