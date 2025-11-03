@@ -1,0 +1,7 @@
+package com.mahmoodidelbi.eventsplatform.api.enums;
+
+public enum UserRole {
+    USER,
+    ORGANIZER,
+    ADMIN
+}

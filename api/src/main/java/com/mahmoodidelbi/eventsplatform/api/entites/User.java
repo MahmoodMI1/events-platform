@@ -1,5 +1,6 @@
 package com.mahmoodidelbi.eventsplatform.api.entites;
 
+import com.mahmoodidelbi.eventsplatform.api.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,14 @@ public class User {
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private UserRole roles;
+
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "updated_at", nullable = false)
+    private Instant updatedAt;
+
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")
     private Instant createdAt;
@@ -42,8 +51,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Ticket> tickets = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "user")
-    private Set<Wallet> wallets = new LinkedHashSet<>();
+    @OneToOne(mappedBy = "user")
+    private Wallet wallet;
+
+
 
 
 }
