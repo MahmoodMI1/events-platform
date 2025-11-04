@@ -34,8 +34,8 @@ public class User {
     private String passwordHash;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private UserRole roles;
+    @Column(name = "role", nullable = false)
+    private UserRole role = UserRole.USER;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "updated_at", nullable = false)
