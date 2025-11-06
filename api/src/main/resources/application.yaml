@@ -10,6 +10,11 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+  jwt:
+    secret: ${JWT_SECRET}
+    access-token-expiration: 3600 # 5min
+    refresh-token-expiration: 604800 # 7d
 
   flyway:
     enabled: true
+
