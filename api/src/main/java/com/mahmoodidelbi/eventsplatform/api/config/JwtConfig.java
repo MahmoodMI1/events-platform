@@ -22,5 +22,4 @@ public class JwtConfig {
         // Converts the string into proper format
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
-
 }
