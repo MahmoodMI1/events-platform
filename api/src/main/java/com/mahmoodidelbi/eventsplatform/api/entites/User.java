@@ -38,11 +38,11 @@ public class User {
     private UserRole role = UserRole.USER;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at", nullable = false,insertable = false, updatable = false)
     private Instant updatedAt;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false, updatable = false)
     private Instant createdAt;
 
     @OneToMany(mappedBy = "organizer")
