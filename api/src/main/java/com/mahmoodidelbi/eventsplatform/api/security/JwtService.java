@@ -34,7 +34,8 @@ public class JwtService {
                 .add("username", user.getUsername())
                 .add("role", user.getRole())
                 //
-                .issuedAt(new Date(System.currentTimeMillis() + (1000L * expirationSeconds)))
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + (1000L * expirationSeconds)))
                 .build();
         return new Jwt(claims, jwtConfig.getSecretKey());
 
